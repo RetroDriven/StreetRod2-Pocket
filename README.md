@@ -1,0 +1,47 @@
+# Street Rod 2 for Analogue Pocket
+
+![Street Rod 2](Banner.png)
+
+An openFPGA port of **Street Rod 2: The Next Generation (1991)**, maintained by RetroDriven. Built with the [openfpgaOS SDK](https://github.com/openfpgaOS/openfpgaSDK) and [Krzysztof Kania's reverse-engineered C engine](https://github.com/kylofon/street-rod-2-sdl3).
+
+Bring your own original DOS game files. Public downloads exclude the DOS executable/resources and the music/effects archives derived from them.
+
+## Install on Analogue Pocket (Windows)
+
+You need your own unpacked Street Rod 2 DOS files. The public core and preparation tool do not include the game's executable, resources or audio.
+
+**No Python, Git, MSYS2, compiler or internet connection is required to run the standalone preparation tool.** It bundles its Python runtime and accurate audio generators. The Windows x64 tool runs locally without installation.
+
+1. Download **RetroDriven.Streetrod2-v1.0.0.zip** from the public core release and extract it into your Pocket SD card root. Keep its license notices.
+2. Download **RetroDriven.Streetrod2-GamePrep-v1.0.0-Windows.zip** from the same Releases page. Extract this tool ZIP to a folder on your **PC**, not the SD card.
+3. Open **RetroDriven.Streetrod2-GamePrep-v1.0.0.exe**.
+4. Click **Browse** beside **Original DOS game folder** and select the folder containing your unpacked DOS files. Do not select a ZIP or disk image.
+5. Choose **Prepared files on this PC**, or leave the default `Documents/StreetRod2-Prepared` folder.
+6. To install directly, use **Browse** beside **Pocket SD root** and select the root of the SD card where you extracted the public core. Leave this blank to prepare files without writing to a card.
+7. Click **Prepare game files**. First use can take several minutes while the six music tracks and accurate effects are generated. Original game files are read without modification; verified cached audio is reused on later runs.
+8. Wait for the success message. If you left the SD field blank, merge the generated `StreetRod2-Prepared/Assets` folder into the SD card root. Do not copy the enclosing prepared-files folder itself.
+9. Safely eject the card. Launch **openFPGA → Computer → Street Rod 2**. Full Audio starts automatically.
+
+Your DOS folder must contain these fourteen files together: `SR.EXE`, `LIB1`, `LIB2`, `LIB3`, `SR2_DATA`, `SR2_SHP`, `SR2_END`, `MSR.SND`, `MSRBEG.MUS`, `MSR2.MUS`, `MSR20.MUS`, `MSR21.MUS`, `MSR24.MUS`, `PAUSE.MUS`. Do not mix Street Rod 1 files or different game installations. Missing files are reported before copying begins.
+
+The final `Assets/streetrod2/common/` folder contains those fourteen files plus **SR2_PCM.PAK** and **SR2_FX.PAK**. Both archives are required for the intended soundtrack and effects performance. The tool copies only these sixteen files and preserves saves and other cores. Keep prepared game files and generated audio private.
+
+### Cache and Troubleshooting
+
+The standalone utility stores its generated audio and log in `%LOCALAPPDATA%/RetroDriven/StreetRod2GamePrep-v1`. The log is `GamePrep.log`. Your prepared output contains only the files needed on the SD card. A failed generation does not begin copying game files onto the SD card.
+
+If the SD card is rejected, check its selected root folder and extract the public core there first. If a previous run was interrupted, close any other preparation window before removing the reported `PREPARATION.lock` file and retrying. The Windows build is unsigned. The tool package includes license notices and corresponding source for its bundled renderers; retain those when redistributing the tool.
+
+## Controls
+
+See [CONTROLS.md](CONTROLS.md) for cursor controls and the contextual keyboard.
+
+## Current Status
+
+Native Pocket port with original gameplay, saved drivers, contextual text/numeric keyboards and balanced 5:4 presentation. Music uses locally rendered Nuked OPL3 recordings; effects use accurate sampled/Opal playback. Normal playback has no Fast FM option or diagnostic startup menus.
+
+## Credits and licensing
+
+See [CREDITS.md](CREDITS.md), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [LICENSE](LICENSE). Port integration is MIT licensed; fetched dependencies retain their licenses. Original game files, audio and artwork belong to their respective rights holders and are not relicensed by this project.
+
+Independent community project; not an official Analogue or Street Rod release.
